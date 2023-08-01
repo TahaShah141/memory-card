@@ -40,7 +40,7 @@ export function gameOver() {
 
 function App() {
 
-  const [count, setCount] = useState(78);
+  const [count, setCount] = useState(60);
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   // const [gameOver, setGameOver] = useState(true);
