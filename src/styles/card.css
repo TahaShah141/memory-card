@@ -1,0 +1,34 @@
+:root {
+    --card-dimension: 100px;
+}
+
+.card-container {
+    position: relative;
+    background-color: #00000055;
+    width: var(--card-dimension);
+    height: var(--card-dimension);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+    box-shadow: 0px 2px 5px #ffffff55;
+    transition: background-color .25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-img {
+    height: 90%;
+    transition: transform .25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* object-fit: contain; */
+}
+
+.card-container:hover .card-img {
+    transform: scale(1.1);
+}
+
+.card-container:hover {
+    background-color: #ffffff11;
+}
+
+.card-text {
+    text-align: center;
+}

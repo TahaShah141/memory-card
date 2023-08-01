@@ -1,0 +1,11 @@
+#root {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loading {
+    align-self: center;
+    font-size: 3rem;
+}

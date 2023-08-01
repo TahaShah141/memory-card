@@ -1,0 +1,13 @@
+.cards-container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-auto-rows: 100px;
+    gap: 10px;
+}
+
+.counter {
+    text-align: center;
+    font-size: 2rem;
+}
