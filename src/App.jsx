@@ -38,11 +38,11 @@ async function fetchPokemons(indexes) {
 
 function App() {
 
-  const [count, setCount] = useState(30);
+  const [count, setCount] = useState(0);
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [starting, setStarting] = useState(false);
-  const [gameover, setGameOver] = useState(true);
+  const [starting, setStarting] = useState(true);
+  const [gameover, setGameOver] = useState(false);
 
   function gameOver() {
     setGameOver(true);
