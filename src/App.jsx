@@ -3,6 +3,7 @@ import './App.css'
 import Cards from './Components/Cards';
 import Startup from './Components/Startup';
 import Gameover from './Components/Gameover';
+import Gamewon from './Components/Gamewon';
 
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'; 
 
@@ -41,8 +42,9 @@ function App() {
   const [count, setCount] = useState(0);
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [starting, setStarting] = useState(true);
+  const [starting, setStarting] = useState(false);
   const [gameover, setGameOver] = useState(false);
+  const [gamewon, setGameWon] = useState(true);
 
   function gameOver() {
     setGameOver(true);
@@ -59,11 +61,17 @@ function App() {
     setCount(0);
     setGameOver(false);
     setLoading(false);
+    setGameWon(false);
   }
 
   function playAgain() {
     setLoading(true);
     setGameOver(false);
+    setGameWon(false);
+  }
+
+  function gameWon() {
+    setGameWon(true);
   }
 
   useEffect(() => {
@@ -93,8 +101,9 @@ function App() {
   return (
     <>
     {gameover && <Gameover startOver={startOver} playAgain={playAgain}/>}
+    {gamewon && <Gamewon startOver={startOver} playAgain={playAgain}/>}
     {loading && <p className="loading">...Loading</p>}
-    {!loading && !starting && !gameover && <Cards pokemons={pokemons} gameOver={gameOver}/>}
+    {!loading && !starting && !gameover && !gamewon && <Cards pokemons={pokemons} gameOver={gameOver} gameWon={gameWon}/>}
     {starting && <Startup difficulties={[12, 30, 60]} setDifficulty={setDifficulty}/>}
     </>
   )
