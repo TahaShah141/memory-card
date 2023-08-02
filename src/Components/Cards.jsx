@@ -15,7 +15,7 @@ function shuffleArray(arr) {
     return newArr;
 }
 
-export default function Cards({pokemons, gameOver}) {
+export default function Cards({pokemons, gameOver, gameWon}) {
 
     const [count, setCount] = useState(0);
     const [pokes, setPokemons] = useState([]);
@@ -30,6 +30,7 @@ export default function Cards({pokemons, gameOver}) {
         let newPokes = shuffleArray(pokes);
         setPokemons(newPokes);
         setCount(count+1);
+        if (count+1 === pokes.length) gameWon();
     }
 
     useEffect(() => {
@@ -37,11 +38,6 @@ export default function Cards({pokemons, gameOver}) {
     }, [pokemons]);
 
     let cards = pokes.map(pokemon => <Card key={pokemon.name} pokemon={pokemon} pokemonClicked={pokemonClicked} gameOver={gameOver}/> );
-    // let cards = [];
-            
-    // for (let i = 0; i < 6; i++) cards.push(
-    //     <Card key={`pikachu ${i}`} pokemon={{name:"pikachu", imageURL:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png", clicked:false}} pokemonClicked={pokemonClicked} />
-    // )
 
     return (
         <>
