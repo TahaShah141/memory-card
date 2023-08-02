@@ -1,0 +1,57 @@
+.popup {
+    background-color: black;
+    min-width: 300px;
+    padding: 25px;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin: 10px;
+    animation: fade-in 0.5s forwards;
+    box-shadow: 0px 0px 5px white;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-25%);
+    }
+
+    50% {
+        opacity: 0.33;
+        transform: translateY(5%);
+    }
+
+    80% {
+        opacity: 0.7;
+        transform: translateY(-2%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title-container * {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    text-shadow: 1px 1px 3px white;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.popup-buttons button {
+    flex: 1;
+    border: 1px solid white;
+    text-shadow: 1px 1px 3px black;
+}
+
+.name span {
+    color: #666;
+}

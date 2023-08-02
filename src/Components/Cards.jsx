@@ -15,7 +15,7 @@ function shuffleArray(arr) {
     return newArr;
 }
 
-export default function Cards({pokemons}) {
+export default function Cards({pokemons, gameOver}) {
 
     const [count, setCount] = useState(0);
     const [pokes, setPokemons] = useState([]);
@@ -36,7 +36,7 @@ export default function Cards({pokemons}) {
         setPokemons(pokemons);
     }, [pokemons]);
 
-    let cards = pokes.map(pokemon => <Card key={pokemon.name} pokemon={pokemon} pokemonClicked={pokemonClicked}/> );
+    let cards = pokes.map(pokemon => <Card key={pokemon.name} pokemon={pokemon} pokemonClicked={pokemonClicked} gameOver={gameOver}/> );
     // let cards = [];
             
     // for (let i = 0; i < 6; i++) cards.push(

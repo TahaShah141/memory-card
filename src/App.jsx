@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import Cards from './Components/Cards';
+import Startup from './Components/Startup';
+import Gameover from './Components/Gameover';
 
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'; 
 
@@ -34,19 +36,39 @@ async function fetchPokemons(indexes) {
   return pokemons;
 }
 
-export function gameOver() {
-  alert("Game Over");
-}
-
 function App() {
 
-  const [count, setCount] = useState(60);
+  const [count, setCount] = useState(30);
   const [pokemons, setPokemons] = useState([]);
-  const [loading, setLoading] = useState(true);
-  // const [gameOver, setGameOver] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [starting, setStarting] = useState(false);
+  const [gameover, setGameOver] = useState(true);
+
+  function gameOver() {
+    setGameOver(true);
+  }
+
+  function setDifficulty(difficulty) {
+    setCount(difficulty);
+    setLoading(true);
+    setStarting(false);
+  }
+
+  function startOver() {
+    setStarting(true);
+    setCount(0);
+    setGameOver(false);
+    setLoading(false);
+  }
+
+  function playAgain() {
+    setLoading(true);
+    setGameOver(false);
+  }
 
   useEffect(() => {
     async function getPokemons(n) {
+      console.log("loadingPokemon")
       let indexes = getRandomIndexes(n);
       let pokemonInfos = await fetchPokemons(indexes);
 
@@ -64,14 +86,16 @@ function App() {
       setLoading(false);
     }
 
-    getPokemons(count);
+    if (loading) getPokemons(count);
 
-  }, [count]);
+  }, [loading]);
 
   return (
     <>
+    {gameover && <Gameover startOver={startOver} playAgain={playAgain}/>}
     {loading && <p className="loading">...Loading</p>}
-    {!loading && <Cards pokemons={pokemons} />}
+    {!loading && !starting && !gameover && <Cards pokemons={pokemons} gameOver={gameOver}/>}
+    {starting && <Startup difficulties={[12, 30, 60]} setDifficulty={setDifficulty}/>}
     </>
   )
 }
