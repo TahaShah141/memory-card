@@ -44,6 +44,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [starting, setStarting] = useState(true);
   const [gameover, setGameOver] = useState(false);
+  const [gamewon, setGameWon] = useState(false);
 
   function gameOver() {
     setGameOver(true);
